@@ -16,8 +16,8 @@ const map = [
     "WWWWWWWWWWWWWWWWWWWWW"
 ];
 
+// black player piece
 let playerDiv = document.getElementById("player")
-
 
 for (iRow = 0; iRow < map.length; iRow++) {
     let rowDiv = document.createElement("div")
@@ -28,13 +28,13 @@ for (iRow = 0; iRow < map.length; iRow++) {
     let mapRow = map[iRow]
     console.log('Map Row at position ' + iRow + ' is: ' + mapRow)
     for (iCell = 0; iCell < mapRow.length; iCell++) {
-        
+
         let cellDiv = document.createElement("div")
         cellDiv.classList.add("cell")
-        cellDiv.id = "cell-" + iCell 
+        cellDiv.id = "cell-" + iCell
 
         rowDiv.appendChild(cellDiv)
-        
+
         let character = mapRow[iCell]
         console.log('Character at position ' + iCell + ' is: "' + character + '"')
 
@@ -43,15 +43,21 @@ for (iRow = 0; iRow < map.length; iRow++) {
             playerDiv.style.left = (22 * iCell) + "px"
             playerDiv.style.top = (22 * iRow) + "px"
         }
-        
+        else if (character == "W") {
+            cellDiv.classList.add("barrier")
+
+        }
 
     }
 }
 
+// scroll through maze
 document.addEventListener("keydown", function (event) {
     console.log(event.key)
-    let pixelsFromTop = playerDiv.style.top.split("px")[0]
-    let pixelsFromLeft = playerDiv.style.left.split("px")[0]
+    let pixelsFromTop = Number(playerDiv.style.top.split("px")[0])
+    let pixelsFromLeft = Number(playerDiv.style.left.split("px")[0])
+    console.log("px from top", pixelsFromTop)
+    console.log("px from left", pixelsFromLeft)
 
     if (event.key == "ArrowUp") {
         playerDiv.style.top = (pixelsFromTop - 22) + "px"
@@ -69,3 +75,15 @@ document.addEventListener("keydown", function (event) {
         playerDiv.style.left = (pixelsFromLeft + 22) + "px"
     }
 })
+
+// navigating maze barriers
+// if W, do not allow move
+// else, allow move
+
+
+
+
+// shade in maze barriers
+
+// assign a getElementID to W
+// go in CSS and color it in
