@@ -1,0 +1,26 @@
+body {
+    margin: 0px;
+}
+
+.row {
+    display: flex; 
+    /* border: 1px dotted red; */
+
+ }
+
+.cell {
+     height: 20px;
+     width: 20px;
+     border: 1px dotted blue;
+}
+    
+#player {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+
+    background-color: black;
+    height: 20px;
+    border: 1px dotted transparent;
+    width: 20px;
+ }
