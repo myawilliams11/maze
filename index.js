@@ -76,7 +76,7 @@ document.addEventListener("keydown", function (event) {
         playerDiv.style.left = (pixelsFromLeft + 22) + "px"
     }
 
-    //  cannot go through barrier 
+    //  make barriers active
 //      if (playerDiv.barrier)
 
     //winning alert 
