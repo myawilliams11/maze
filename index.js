@@ -43,6 +43,7 @@ for (iRow = 0; iRow < map.length; iRow++) {
             playerDiv.style.left = (22 * iCell) + "px"
             playerDiv.style.top = (22 * iRow) + "px"
         }
+        // make barrier color grey
         else if (character == "W") {
             cellDiv.classList.add("barrier")
 
@@ -74,16 +75,15 @@ document.addEventListener("keydown", function (event) {
     if (event.key == "ArrowRight") {
         playerDiv.style.left = (pixelsFromLeft + 22) + "px"
     }
+
+    //  cannot go through barrier 
+//      if (playerDiv.barrier)
+
+    //winning alert 
+        
+        if (playerDiv.offsetTop == 176 && playerDiv.offsetLeft == 440){
+        window.alert ("Great Job!"); 
+} 
+
 })
 
-// navigating maze barriers
-// if W, do not allow move
-// else, allow move
-
-
-
-
-// shade in maze barriers
-
-// assign a getElementID to W
-// go in CSS and color it in
