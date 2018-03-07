@@ -15,6 +15,8 @@ const map = [
     "S       W       W   W",
     "WWWWWWWWWWWWWWWWWWWWW"
 ];
+var playerRow = 0;
+var playerCell = 0;
 
 // black player piece
 let playerDiv = document.getElementById("player")
@@ -38,17 +40,19 @@ for (iRow = 0; iRow < map.length; iRow++) {
         let character = mapRow[iCell]
         console.log('Character at position ' + iCell + ' is: "' + character + '"')
 
+
         // set initial player position
         if (character == "S") {
             playerDiv.style.left = (22 * iCell) + "px"
             playerDiv.style.top = (22 * iRow) + "px"
+            playerRow = iRow;
+            playerCell = iCell; 
         }
         // make barrier color grey
         else if (character == "W") {
             cellDiv.classList.add("barrier")
 
         }
-
     }
 }
 
@@ -60,21 +64,42 @@ document.addEventListener("keydown", function (event) {
     console.log("px from top", pixelsFromTop)
     console.log("px from left", pixelsFromLeft)
 
-    if (event.key == "ArrowUp") {
-        playerDiv.style.top = (pixelsFromTop - 22) + "px"
+    if (event.key == "ArrowUp") {     
+        playerRow--;
+        if (map[playerRow][playerCell] == "W") {
+            playerRow++;
+        } else {
+            playerDiv.style.top = (pixelsFromTop - 22) + "px";
+        }     
     }
 
     if (event.key == "ArrowLeft") {
-        playerDiv.style.left = (pixelsFromLeft - 22) + "px"
-    }
+        playerCell--;
+        if (map[playerRow][playerCell] == "W"){
+            playerCell++;  
+        } else {
+        playerDiv.style.left = (pixelsFromLeft - 22) + "px";  
+        }
+    } 
 
     if (event.key == "ArrowDown") {
-        playerDiv.style.top = (pixelsFromTop + 22) + "px"
+        playerRow++;
+        if (map[playerRow][playerCell] == "W") {
+            playerRow--;
+        } else {
+        playerDiv.style.top = (pixelsFromTop + 22) + "px";
+        }     
     }
 
     if (event.key == "ArrowRight") {
-        playerDiv.style.left = (pixelsFromLeft + 22) + "px"
+        playerCell++;
+        if (map[playerRow][playerCell] == "W") {
+            playerCell--;
+        } else {
+            playerDiv.style.left = (pixelsFromLeft + 22) + "px";
+        }
     }
+    console.log("playerPosition:", map[playerRow][playerCell])
 
     //  make barriers active
 //      if (playerDiv.barrier)
@@ -86,4 +111,3 @@ document.addEventListener("keydown", function (event) {
 } 
 
 })
-
